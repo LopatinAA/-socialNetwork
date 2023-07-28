@@ -1,0 +1,12 @@
+.nav {
+    background-color: blanchedalmond;
+    grid-area: n;
+}
+
+.item {
+    color: blue;
+}
+
+.active {
+    color:brown
+} 
