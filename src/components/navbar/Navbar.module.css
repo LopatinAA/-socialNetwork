@@ -1,12 +1,14 @@
 .nav {
     background-color: blanchedalmond;
     grid-area: n;
+    padding: 20px;
 }
 
 .item {
     color: blue;
+    text-decoration: none;
 }
 
 .active {
-    color:brown
-} 
+    color: brown;
+}
