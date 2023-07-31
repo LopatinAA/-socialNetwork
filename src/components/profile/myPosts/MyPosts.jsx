@@ -9,7 +9,8 @@ export const MyPosts = () => {
            <div>
            <textarea></textarea>
             <button>click</button>
-            <Post/>
+            <Post message='hi, how are you?' likeCounts='15'/>
+            <Post message='it`s my first post' likeCounts='123'/>
            </div>
           </div>
         </div>
