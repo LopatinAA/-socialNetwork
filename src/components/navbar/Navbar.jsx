@@ -6,19 +6,19 @@ export const Navbar = () => {
     return (
         <nav className={styles.nav}>
             <div className={`${styles.item} ${styles.active}`}>
-                <a href='http'>Profile</a>
+                <a href='/profile'>Profile</a>
             </div>
             <div className={styles.item}>
-                <a href='http'>Massage</a>
+                <a href='/dialogs'>Massage</a>
             </div>
             <div className={styles.item}>
-                <a href='http'>News</a>
+                <a href='/news'>News</a>
             </div>
             <div className={styles.item}>
-                <a href='http'>Music</a>
+                <a href='/music'>Music</a>
             </div>
             <div className={styles.item}>
-                <a href='http'>Settings</a>
+                <a href='/settings'>Settings</a>
             </div>
         </nav>
     )
