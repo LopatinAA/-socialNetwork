@@ -11,4 +11,5 @@
 
 .active {
     color: brown;
+    text-decoration: none;
 }
