@@ -3,8 +3,12 @@ import styles from './Dialogs.module.css'
 
 const DialogItem = (props) => {
     return (
-        <div className={styles.dialog + ' ' + styles.active}>
-            <NavLink to={'/dialogs/' + props.id}>{props.name}</NavLink>
+        <div >
+            <NavLink
+                to={'/dialogs/'}
+                className={styles.dialog + ' ' + styles.active}>
+                {props.name}
+            </NavLink>
         </div>
     )
 }
@@ -15,22 +19,28 @@ const Message = (props) => {
     )
 }
 
+const dialogsData = [
+    { id: 1, name: 'Dimysh' },
+    { id: 2, name: 'Andrey' },
+    { id: 3, name: 'Sasha' },
+    { id: 4, name: 'Sveta' },
+    { id: 5, name: 'Viktor' },
+];
+
+const messagesData = [
+    { id: 1, message: 'hi' },
+    { id: 2, message: 'yo' },
+    { id: 3, message: 'by' },
+]
+
 export const Dialogs = (props) => {
     return (
         <div className={styles.dialogs}>
             <div className={styles.dialogsItems}>
-                <DialogItem name='Dimysh' id='1'/>
-                <DialogItem name='Andrey' id='2'/>
-                <DialogItem name='Sasha' id='3'/>
-                <DialogItem name='Sveta' id='4'/>
-                <DialogItem name='Viktor' id='5'/>
+                {dialogsData.map((e) => (<DialogItem name={e.name} id={e.id} />))}
             </div>
             <div className={styles.messages}>
-                <Message message='hi'/>
-                <Message message='yo'/>
-                <Message message='by'/>
-                <Message message='by'/>
-                <Message message='by'/>
+                {messagesData.map((e) => (<Message message={e.message} id={e.id} />))}
             </div>
         </div>
     )
