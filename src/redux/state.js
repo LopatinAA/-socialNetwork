@@ -1,12 +1,3 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import {state} from './redux/state'
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-
 const dialogData = [
   { id: 1, name: 'Dimysh' },
   { id: 2, name: 'Andrey' },
@@ -26,18 +17,10 @@ const postData = [
   { id: 2, message: 'it`s my first post', likeCounts: 123 },
 ]
 
-
-const iProps = {
-  dialogsData : {
+export const state = {
+  dialogPage : {
     dialogData:dialogData,
     messageData:messageData,
   },
-  postData:postData,
+  profilePage:postData,
 }
-root.render(
-  <React.StrictMode>
-      <App state={state}/>
-  </React.StrictMode>
-);
-
-reportWebVitals();
