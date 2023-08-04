@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-const dialogsData = [
+const dialogData = [
   { id: 1, name: 'Dimysh' },
   { id: 2, name: 'Andrey' },
   { id: 3, name: 'Sasha' },
@@ -14,19 +14,28 @@ const dialogsData = [
   { id: 5, name: 'Viktor' },
 ];
 
-const messagesData = [
+const messageData = [
   { id: 1, message: 'hi' },
   { id: 2, message: 'yo' },
   { id: 3, message: 'by' },
+];
+
+const postData = [
+  { id: 1, message: 'hi, how are you?', likeCounts: 15 },
+  { id: 2, message: 'it`s my first post', likeCounts: 123 },
 ]
 
+
 const iProps = {
-  dialogsData:dialogsData,
-  messagesData:messagesData,
+  dialogsData : {
+    dialogData:dialogData,
+    messageData:messageData,
+  },
+  postData:postData,
 }
 root.render(
   <React.StrictMode>
-      <App data={iProps}/>
+      <App bll={iProps}/>
   </React.StrictMode>
 );
 

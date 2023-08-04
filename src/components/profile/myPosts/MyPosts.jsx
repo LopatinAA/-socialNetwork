@@ -2,7 +2,7 @@ import React from "react";
 import { Post } from "./post/Post";
 import styles from './MyPosts.module.css'
 
-export const MyPosts = () => {
+export const MyPosts = (props) => {
 
   const postData = [
     {id: 1, message:'hi, how are you?', likeCounts: 15},

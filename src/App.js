@@ -8,6 +8,8 @@ import { News } from './components/news/News';
 import { Music } from './components/music/Music';
 import { Settings } from './components/settings/Settings';
 
+
+
 const App = (props) => {
   return (
     <BrowserRouter>
@@ -16,14 +18,12 @@ const App = (props) => {
         <Navbar />
         <div className='app-wrapper-content'>
           <Routes>
-            <Route  path='/profile' Component={Profile} />
-            <Route  path='/dialogs' Component={Dialogs(props.data)} />
-            <Route  path='/news' Component={News} />
-            <Route  path='/music' Component={Music} />
-            <Route  path='/settings' Component={Settings} />
+            <Route path='/profile' element={<Profile postData={props.bll.postData} />}/>
+            <Route path='/dialogs' element={<Dialogs dialogsData={props.bll.dialogsData}/>} />
+            <Route path='/news' element={<News/>} />
+            <Route path='/music' element={<Music/>} />
+            <Route path='/settings' element={<Settings/>} />
           </Routes>
-          {/* <Profile />
-          <Dialogs /> */}
         </div>
       </div>
     </BrowserRouter>
