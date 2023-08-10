@@ -16,6 +16,11 @@
     text-decoration: none;
 }
 
+.messagesContainer{
+    display: grid;
+    grid-template-areas: 9fr 1fr;
+}
+
 .messages{
     padding: 10px;
 }
