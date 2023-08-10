@@ -1,0 +1,11 @@
+.bestFriends {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.bestFriends img {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+}
