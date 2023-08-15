@@ -21,7 +21,9 @@ export const Navbar = () => {
             <div>
                 <NavLink to='/settings' className={e => e.isActive ? styles.active : styles.item}>Settings</NavLink>
             </div>
+            <div className={styles.bestFriends}>
             <BestFriends/>
+            </div>
         </nav>
     )
 }

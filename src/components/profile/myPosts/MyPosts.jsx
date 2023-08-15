@@ -5,7 +5,7 @@ import styles from './MyPosts.module.css'
 export const MyPosts = (props) => {
   const newPostElement = React.createRef();
   const addPost = () => {
-    alert(newPostElement.current.value);
+    props.addPost(newPostElement.current.value);
   }
   return (
     <div className={styles.postsBlock}>
