@@ -19,21 +19,33 @@ const postData = [
   { id: 2, message: 'it`s my first post', likeCounts: 123 },
   { id: 3, message: 'it`s my first post', likeCounts: 123 },
 ]
+let newPostText = "newPostText"
 
 export const state = {
-  dialogPage : {
-    dialogData:dialogData,
-    messageData:messageData,
+  dialogPage: {
+    dialogData: dialogData,
+    messageData: messageData,
   },
-  profilePage:postData,
+  profilePage: {
+    postData,
+    newPostText,
+  }
 }
 
-export const addPost = (postMessage) => {
+window.state = state;
+
+export const addPost = () => {
   let newPost = {
     id: 5,
-    message: postMessage,
+    message: state.profilePage.newPostText,
     likeCounts: 0,
   }
-  state.profilePage.push(newPost);
+  state.profilePage.postData.push(newPost);
+  renderEntireTree(state)
+  state.profilePage.newPostText = ''
+}
+
+export const updateNewPostText = (newText) => {
+  state.profilePage.newPostText = newText;
   renderEntireTree(state)
 }
