@@ -1,4 +1,4 @@
-import { renderEntireTree } from "../render";
+let renderEntireTree = () => {}
 
 const dialogData = [
   { id: 1, name: 'Dimysh' },
@@ -48,4 +48,8 @@ export const addPost = () => {
 export const updateNewPostText = (newText) => {
   state.profilePage.newPostText = newText;
   renderEntireTree(state)
+}
+
+export const subscribe = (observer) => {
+  renderEntireTree = observer;
 }
