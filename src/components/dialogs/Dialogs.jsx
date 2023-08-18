@@ -11,11 +11,11 @@ export const Dialogs = (props) => {
     return (
         <div className={styles.dialogs}>
             <div className={styles.dialogsItems}>
-                {props.dialogsData.dialogData.map((e) => (<DialogItem name={e.name} id={e.id} />))}
+                {props.store.getState().dialogPage.dialogData.map((e) => (<DialogItem name={e.name} id={e.id} />))}
             </div>
             <div className={styles.messagesContainer}>
                 <div className={styles.messages}>
-                    {props.dialogsData.messageData.map((e) => (<Message message={e.message} id={e.id} />))}
+                    {props.store.getState().dialogPage.messageData.map((e) => (<Message message={e.message} id={e.id} />))}
                 </div>
                 <div>
                     <textarea ref={newMessageElement}></textarea>
