@@ -7,15 +7,15 @@ import reportWebVitals from './reportWebVitals';
 import { store } from './redux/state'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-export const renderEntireTree = () => {
+export const renderEntireTree = (state) => {
     root.render(
         <React.StrictMode>
-            <App store ={store} />
+            <App store={state} dispatch={store.dispatch.bind(store)}/>
         </React.StrictMode>
     );
 
     reportWebVitals();
 
 }
-renderEntireTree(store)
+renderEntireTree(store.getState())
 store.subscribe(renderEntireTree)

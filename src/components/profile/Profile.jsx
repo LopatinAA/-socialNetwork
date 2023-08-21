@@ -7,7 +7,7 @@ export const Profile = (props) => {
     <div>
       <ProfileInfo />
       <MyPosts
-        store={props.store}/>
+        store={props.store} dispatch={props.dispatch}/>
     </div>
   )
 } 

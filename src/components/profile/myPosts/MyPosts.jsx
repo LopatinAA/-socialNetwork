@@ -3,10 +3,9 @@ import { Post } from "./post/Post";
 import styles from './MyPosts.module.css'
 
 export const MyPosts = (props) => {
-  const state = props.store.getState();
   const newPostElement = React.createRef();
   const onPostChange = () => {
-    props.store.updateNewPostText(newPostElement.current.value)
+    props.dispatch({type: 'UPDATE-NEW-POST-TEXT', newText: newPostElement.current.value})
   }
   return (
     <div className={styles.postsBlock}>
@@ -17,13 +16,13 @@ export const MyPosts = (props) => {
             <textarea 
             onChange={onPostChange}
             ref={newPostElement} 
-            value={state.profilePage.newPostText}/>
+            value={props.store.profilePage.newPostText}/>
           </div>
           <div>
-            <button onClick={() =>{props.store.addPost()}}>click</button>
+            <button onClick={() =>{props.dispatch({type: 'ADD-POST'})}}>click</button>
           </div>
           <div className={styles.posts}>
-            {state.profilePage.postData.map((el) => (<Post message={el.message} likeCounts={el.likeCounts}/>))}
+            {props.dispatch({type: 'GET-POST-DATA'}).map((el) => (<Post message={el.message} likeCounts={el.likeCounts}/>))}
           </div>
         </div>
       </div>
