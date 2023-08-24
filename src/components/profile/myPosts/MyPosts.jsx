@@ -1,7 +1,7 @@
 import React from "react";
 import { Post } from "./post/Post";
 import styles from './MyPosts.module.css'
-import { updateNewPostActionCreator,addPostActionCreator } from "../../../redux/profileReducer";
+import { updateNewPostActionCreator, addPostActionCreator } from "../../../redux/profileReducer";
 
 export const MyPosts = (props) => {
   const newPostElement = React.createRef();
@@ -30,4 +30,4 @@ export const MyPosts = (props) => {
       </div>
     </div>
   )
-} 
+}

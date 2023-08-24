@@ -1,5 +1,5 @@
-import {profilePage} from './profileReducer'
-import {dialogsPage} from './dialogReducer'
+import {profileReducer} from './profileReducer'
+import {dialogsReducer} from './dialogReducer'
 
 export const store = {
   _state: {
@@ -37,28 +37,9 @@ export const store = {
     this._callSubscriber = observer
   },
   dispatch(action) { // {type: 'ADD-POST'} action - объект у которого как минимум есть одно свойство type
-    this._state.profilePage = profilePage(this._state.profilePage, action)
-    this._state.dialogPage = dialogsPage(this._state.dialogPage, action)
+    this._state.profilePage = profileReducer(this._state.profilePage, action)
+    this._state.dialogPage = dialogsReducer(this._state.dialogPage, action)
     this._callSubscriber(this._state)
-  },
-  _addPost() {
-    let newPost = {
-      id: 5,
-      message: this._state.profilePage.newPostText,
-      likeCounts: 0,
-    }
-    this._state.profilePage.postData.push(newPost)
-    this._callSubscriber(this._state)
-  },
-  _updateNewPostText(newText) {
-    this._state.profilePage.newPostText = newText
-    this._callSubscriber(this._state)
-  },
-  _getDialogData() {
-    return this._state.dialogPage.dialogData
-  },
-  _getMessageData() {
-    return this._state.dialogPage.messageData
   },
 }
 
