@@ -1,7 +1,7 @@
 import React from "react";
 import { Post } from "./post/Post";
 import styles from './MyPosts.module.css'
-import { updateNewPostActionCreator,addPostActionCreator } from "../../../redux/state";
+import { updateNewPostActionCreator,addPostActionCreator } from "../../../redux/profileReducer";
 
 export const MyPosts = (props) => {
   const newPostElement = React.createRef();
@@ -16,6 +16,7 @@ export const MyPosts = (props) => {
           <div>
             <textarea 
             onChange={onPostChange}
+            placeholder='Share your thoughts'
             ref={newPostElement} 
             value={props.store.profilePage.newPostText}/>
           </div>
@@ -23,7 +24,7 @@ export const MyPosts = (props) => {
             <button onClick={() =>{props.dispatch(addPostActionCreator())}}>click</button>
           </div>
           <div className={styles.posts}>
-            {props.dispatch({type: 'GET-POST-DATA'}).map((el) => (<Post message={el.message} likeCounts={el.likeCounts}/>))}
+            {props.store.profilePage.postData.map((el) => (<Post message={el.message} likeCounts={el.likeCounts}/>))}
           </div>
         </div>
       </div>

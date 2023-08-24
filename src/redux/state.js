@@ -1,9 +1,5 @@
-const ADD_POST = 'ADD-POST'
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
-const GET_POST_DATA = 'GET-POST-DATA'
-
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-POST-BODY'
-const SEND_MESSAGE = 'SEND-MESSAGE'
+import {profilePage} from './profileReducer'
+import {dialogsPage} from './dialogReducer'
 
 export const store = {
   _state: {
@@ -40,36 +36,10 @@ export const store = {
   subscribe(observer) {
     this._callSubscriber = observer
   },
-  dispatch(action) { // {type: 'ADD-POST'}
-    if (action.type === ADD_POST) {
-      let newPost = {
-        id: 5,
-        message: this._state.profilePage.newPostText,
-        likeCounts: 0,
-      }
-      this._state.profilePage.postData.push(newPost)
-      this._callSubscriber(this._state)
-    } else if (action.type === UPDATE_NEW_POST_TEXT) {
-      this._state.profilePage.newPostText = action.newText
-      this._callSubscriber(this._state)
-    } else if (action.type === GET_POST_DATA) {
-      return this._state.profilePage.postData
-    } else if (action.type === 'GET-DIALOG-DATA') {
-      return this._state.dialogPage.dialogData
-    } else if (action.type === 'GET-MESSAGE-DATA') {
-      return this._state.dialogPage.messageData
-    } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
-      this._state.dialogPage.newMessageBody = action.body
-      this._callSubscriber(this._state)
-    } else if (action.type === SEND_MESSAGE) {
-      console.log(action.type)
-      let newMessage = {
-        id: 4,
-        message: this._state.dialogPage.newMessageBody
-      }
-      this._state.dialogPage.messageData.push(newMessage)
-      this._callSubscriber(this._state)
-    }
+  dispatch(action) { // {type: 'ADD-POST'} action - объект у которого как минимум есть одно свойство type
+    this._state.profilePage = profilePage(this._state.profilePage, action)
+    this._state.dialogPage = dialogsPage(this._state.dialogPage, action)
+    this._callSubscriber(this._state)
   },
   _addPost() {
     let newPost = {
@@ -90,31 +60,6 @@ export const store = {
   _getMessageData() {
     return this._state.dialogPage.messageData
   },
-}
-
-export const addPostActionCreator = () => {
-  return {
-    type: ADD_POST
-  }
-}
-export const updateNewPostActionCreator = (text) => {
-  return {
-    type: UPDATE_NEW_POST_TEXT,
-    newText: text,
-  }
-}
-
-export const addMessageActionCreator = () => {
-  console.log('qdasdqd')
-    return {
-      type: SEND_MESSAGE
-    }
-}
-export const updateNewMessageActionCreator = (text) => {
-    return {
-      type: UPDATE_NEW_MESSAGE_BODY, 
-      body: text
-    }
 }
 
 window.state = store;
