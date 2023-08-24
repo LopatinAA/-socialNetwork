@@ -1,5 +1,10 @@
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+const GET_POST_DATA = 'GET-POST-DATA'
+
+const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-POST-BODY'
+const SEND_MESSAGE = 'SEND-MESSAGE'
+
 export const store = {
   _state: {
     dialogPage: {
@@ -15,6 +20,7 @@ export const store = {
         { id: 2, message: 'yo' },
         { id: 3, message: 'by' },
       ],
+      newMessageBody: "",
     },
     profilePage: {
       postData: [
@@ -22,7 +28,7 @@ export const store = {
         { id: 2, message: 'it`s my first post', likeCounts: 123 },
         { id: 3, message: 'it`s my first post', likeCounts: 123 },
       ],
-      newPostText: "newPostText",
+      newPostText: "",
     },
   },
   _callSubscriber() {
@@ -46,12 +52,23 @@ export const store = {
     } else if (action.type === UPDATE_NEW_POST_TEXT) {
       this._state.profilePage.newPostText = action.newText
       this._callSubscriber(this._state)
-    } else if (action.type === 'GET-POST-DATA') {
+    } else if (action.type === GET_POST_DATA) {
       return this._state.profilePage.postData
     } else if (action.type === 'GET-DIALOG-DATA') {
       return this._state.dialogPage.dialogData
     } else if (action.type === 'GET-MESSAGE-DATA') {
       return this._state.dialogPage.messageData
+    } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
+      this._state.dialogPage.newMessageBody = action.body
+      this._callSubscriber(this._state)
+    } else if (action.type === SEND_MESSAGE) {
+      console.log(action.type)
+      let newMessage = {
+        id: 4,
+        message: this._state.dialogPage.newMessageBody
+      }
+      this._state.dialogPage.messageData.push(newMessage)
+      this._callSubscriber(this._state)
     }
   },
   _addPost() {
@@ -85,6 +102,19 @@ export const updateNewPostActionCreator = (text) => {
     type: UPDATE_NEW_POST_TEXT,
     newText: text,
   }
+}
+
+export const addMessageActionCreator = () => {
+  console.log('qdasdqd')
+    return {
+      type: SEND_MESSAGE
+    }
+}
+export const updateNewMessageActionCreator = (text) => {
+    return {
+      type: UPDATE_NEW_MESSAGE_BODY, 
+      body: text
+    }
 }
 
 window.state = store;
