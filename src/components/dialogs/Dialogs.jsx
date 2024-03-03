@@ -9,17 +9,17 @@ export const Dialogs = (props) => {
     return (
         <div className={styles.dialogs}>
             <div className={styles.dialogsItems}>
-                {props.dialogData.map((e) => (<DialogItem name={e.name} id={e.id} />))}
+                {props.dialogPage.dialogData.map((e) => (<DialogItem name={e.name} id={e.id} />))}
             </div>
             <div className={styles.messagesContainer}>
                 <div className={styles.messages}>
-                    {props.messageData.map((e) => (<Message message={e.message} id={e.id} />))}
+                    {props.dialogPage.messageData.map((e) => (<Message message={e.message} id={e.id} />))}
                 </div>
                 <div>
                     <textarea 
                     onChange={(e) => props.updateNewMessageActionCreator(e.target.value)}
                     placeholder='Enter your message'
-                    value={props.newMessageBody}></textarea>
+                    value={props.dialogPage.newMessageBody}></textarea>
                     <button onClick={() => {props.addMessageActionCreator()}}>send</button>
                 </div>
             </div>

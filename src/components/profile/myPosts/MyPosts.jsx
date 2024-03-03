@@ -13,13 +13,13 @@ export const MyPosts = (props) => {
             <textarea 
             onChange={(e) => {props.updateNewPostActionCreator(e.target.value)}}
             placeholder='Share your thoughts'
-            value={props.value}/>
+            value={props.profilePage.newpostText}/>
           </div>
           <div>
             <button onClick={() =>{props.addPostActionCreator()}}>click</button>
           </div>
           <div className={styles.posts}>
-            {props.post.map((el) => (<Post message={el.message} likeCounts={el.likeCounts}/>))}
+            {props.profilePage.postData.map((el) => (<Post message={el.message} likeCounts={el.likeCounts}/>))}
           </div>
         </div>
       </div>

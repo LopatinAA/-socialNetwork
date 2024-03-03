@@ -1,7 +1,16 @@
-import {combineReducers} from 'redux'
-import { configureStore } from '@reduxjs/toolkit';
+import {combineReducers, legacy_createStore} from 'redux'  // необходима разобраться с  legacy_createStore
+// import { configureStore } from '@reduxjs/toolkit';
 import {profileReducer} from './profileReducer'
 import {dialogsReducer} from './dialogReducer'
+
+let reduser = combineReducers({
+    profilePage: profileReducer,
+    dialogPage: dialogsReducer,
+})
+
+ export let store =  legacy_createStore(reduser)
+ 
+ window.store = store;
 
 const rootReducer = combineReducers({
     profilePage: profileReducer,
@@ -9,9 +18,7 @@ const rootReducer = combineReducers({
     }
 )
 
-// export default rootReducer
-
-export const storeS = configureStore({reducer: rootReducer})
+// export const storeS = configureStore({reducer: rootReducer})
 
 // export const storeS = configureStore({
 //     reducer:rootReducer,

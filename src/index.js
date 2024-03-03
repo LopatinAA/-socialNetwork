@@ -4,23 +4,25 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { store } from './redux/store'
-import { storeS } from './redux/reduxStore'
+import { store } from './redux/reduxStore'
+import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-export const renderEntireTree = (store) => {
+export const renderEntireTree = () => {
     console.log('store in renderEntireTree: ', store)
     root.render(
         <React.StrictMode>
-            <App store={store} />
+            <Provider store={store}>
+                <App />
+            </Provider>
         </React.StrictMode>
     );
 
     reportWebVitals();
 
 }
-renderEntireTree(storeS.getState())
-storeS.subscribe(() => {
-    let state = storeS.getState()
+renderEntireTree()
+store.subscribe(() => {
+    let state = store.getState()
     renderEntireTree(state)
 })
