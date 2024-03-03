@@ -4,7 +4,6 @@ import { ProfileInfo } from "./profileInfo/ProfileInfo";
 import { MyPostsContainer } from "./myPosts/MyPostsContainer";
 
 export const Profile = (props) => {
-  console.log('props in Profile', props);
   return (
     <div>
       <ProfileInfo />
