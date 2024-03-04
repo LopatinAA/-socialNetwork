@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 const mapStateToProps = (state) => {
   return {
     profilePage: state.profilePage,
-    newPostText: state.profilePage.newPostText
   }
 }
 
